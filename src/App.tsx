@@ -1,18 +1,32 @@
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState<string | null>();
+
+  let src;
+  if (user == "Andrew") src = "https://giphy.com/embed/Ju7l5y9osyymQ";
+  if (user == "Noelle") src = "https://giphy.com/embed/Vd2gLJCBhfnPSk48r5";
+  if (user == "Edmund") src = "https://giphy.com/embed/fkD36jhiqzJ9m";
+
   return (
-    <div>
+    <div style={{ width: "80vw" }}>
+      <div>Choose User</div>
+      <div>
+        <button onClick={() => setUser("Andrew")}>Andrew</button>
+        <button onClick={() => setUser("Noelle")}>Noelle</button>
+        <button onClick={() => setUser("Edmund")}>Edmund</button>
+      </div>
       <div
         style={{
-          width: "250px",
+          width: "100%",
           // height: "100px",
           paddingBottom: "75%",
           position: "relative",
         }}
       >
         <iframe
-          src="https://giphy.com/embed/Ju7l5y9osyymQ"
+          src={src}
           width="100%"
           height="100%"
           style={{ position: "absolute" }}
@@ -20,9 +34,6 @@ function App() {
           allowFullScreen
         ></iframe>
       </div>
-      <p>
-        <a href="https://giphy.com/gifs/rick-astley-Ju7l5y9osyymQ"></a>
-      </p>
     </div>
   );
 }
